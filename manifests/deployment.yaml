@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storebackend
+  labels:
+    app: storebackend
+    kubernetes.azure.com/generator: devhub
+  namespace: namespace-workflow-1720010562505
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storebackend
+  template:
+    metadata:
+      labels:
+        app: storebackend
+    spec:
+      containers:
+        - name: storebackend
+          image: acraksautomaticdemo.azurecr.io/image-workflow-1720010562505:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3002
